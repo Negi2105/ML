@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-dataset=pd.read_csv(r"C:\\Users\\91769\\OneDrive - Plaksha University\\Documents\\GitHub\\ML\\Clustering\\Mall_Customers.csv", encoding="UTF-8")
+dataset=pd.read_csv(r"Mall_Customers.csv", encoding="UTF-8")
 X=dataset.iloc[:, [3,4]].values
 
 
