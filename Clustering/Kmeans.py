@@ -12,13 +12,13 @@ for i in range(1, 11):
     kmeans = KMeans(n_clusters= i, init= 'k-means++', random_state = 42)
     kmeans.fit(X)
     wcss.append(kmeans.inertia_)
-'''
+
 plt.plot(range(1, 11), wcss)
 plt.title("Elbow")
 plt.xlabel('Number of Clusters')
 plt.ylabel("WCSS")
 plt.show()
-'''
+
 kmeans = KMeans(n_clusters=5, init='k-means++', random_state= 42)
 y_kmeans = kmeans.fit_predict(X)
 #print(y_kmeans)
