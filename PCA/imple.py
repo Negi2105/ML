@@ -28,3 +28,23 @@ y_pred=classifier.predict(x_test)
 cm=confusion_matrix(y_test, y_pred)
 print(cm)
 print(accuracy_score(y_test, y_pred))
+
+from matplotlib.colors import ListedColormap
+x_set, y_set = x_train, y_train
+X1, X2 = np.meshgrid(np.arange(start=x_set[:,0].min()-1, stop=x_set[:,0].max()-1, step=0.01),
+                     np.arange(start=x_set[:,1].min()-1, stop=x_set[:,1].max()-1, step=0.01))
+plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(), X2.ravel()]).T).reshape(X1.shape), alpha=0.75, 
+             cmap=ListedColormap(('red', 'green', 'blue')))
+plt.xlim(X1.min(), X1.max())
+plt.ylim(X2.min(), X2.max())
+
+for i, j in enumerate(np.unique(y_set)):
+    plt.scatter(x_set[y_set==j, 0], x_set[y_set==j, 1], 
+                c=ListedColormap(('red', 'green', 'blue'))(i), label=j)
+    
+plt.title('Logistic Regression (Training Set)')
+plt.xlabel("PC1")
+plt.ylabel("PC2")
+plt.legend()
+plt.show()
+
